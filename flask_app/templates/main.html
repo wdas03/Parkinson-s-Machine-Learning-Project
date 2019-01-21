@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Machine Learning Web Application</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <link type="text/css" href="{{ url_for('static', filename='main.css') }}" />
+        <style type="text/css">
+            textarea {
+                margin-left: 10vw;
+                width: 80vw;
+                height: 400px;
+                font-size:1.4em;
+            }
+            
+            body {
+                background-color: lightblue;
+                text-align: center;
+            }
+            
+            div label, div select {
+                font-size: 1.5em;
+            }
+            
+            button {
+                height: 50px;
+                width: 15vw;
+                font-size: 1.4em;
+            }
+            
+            h2 {
+                font-style: italic;
+                font-weight: bold;
+                font-size: 1.8em;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Typing Test to Determine Risk of Parkinson's Disease</h1>
+        <div> 
+            <h3>Please answer the following questions:</h3>
+            
+            <label>* What is your dominant hand? Select none if ambidextrous: </label> <br />
+            <select name="sided" id="sided_select"> 
+                <option value="None">None</option> 
+                <option value="Right">Right</option> 
+                <option value="Left">Left</option> 
+            </select>
+            
+            <br /><br />
+            
+            <label>* Do you experience tremors in your hands or anywhere on your body?</label><br />
+            <select name="tremors" id="tremors_select">
+                <option value="tremors_true">Yes</option>
+                <option value="tremors_false">No</option>
+            </select>
+            
+            <h3>During the typing test, please make sure to type as you normally and naturally would in your daily life, in order to get the most accurate probability possible:</h3>
+            
+            <h2>Prompt: Describe what you did last weekend.</h2>
+            
+            <textarea type="text" name="name" id="in" placeholder="Enter text here..."></textarea>
+            <br /><br /><br />
+            <button type="submit" id="submit">Submit</button>
+        </div>
+        
+        <div id="output">
+        </div>
+
+        <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+    </body>
+</html>
