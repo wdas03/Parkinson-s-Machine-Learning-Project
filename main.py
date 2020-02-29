@@ -160,6 +160,11 @@ ada = AdaBoostClassifier(DecisionTreeClassifier(random_state=0), n_estimators=20
 vote = VotingClassifier(estimators=[('lr', lr), ('dt', tree), ('gb', clf), ('ada', ada)], voting='hard')
 qda = QDA()
 
+# Import run models function
+from model import run_models
+
+run_models(X_latency_times, y_latency_times)
+
 # Feature selection
 from sklearn.feature_selection import RFE
 from sklearn.feature_selection import SelectKBest
@@ -176,7 +181,7 @@ print(fit.ranking_)
 X_optimal = X.iloc[:, indices].values
 """
 
-def run_models(X, y):
+def run_models2(X, y):
     models = []
     models.append(('Logistic Regression', lr))
     models.append(('KNN', knn))
@@ -274,9 +279,11 @@ print(X_latency_times.iloc[:, indices].columns)
 print(fit.ranking_)
 X_optimal = X_latency_times.iloc[:, indices].values
 
-a, b = run_models(X_optimal, y_latency_times)
+a, b = run_models2(X_optimal, y_latency_times)
 print(a)
 print(b)
+
+run_models(X_optimal, y_latency_times)
 
 important_features = pd.Series(data=ada.feature_importances_,index=X_latency_times.columns)
 important_features.sort_values(ascending=False,inplace=True)

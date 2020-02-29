@@ -297,4 +297,3 @@ plt.ylabel('True Positive Rate')
 plt.title('Receiver operating characteristic')
 plt.legend(loc="lower right")
 plt.show()
-
